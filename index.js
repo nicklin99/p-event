@@ -4,8 +4,8 @@ const pTimeout = require('p-timeout');
 const symbolAsyncIterator = Symbol.asyncIterator || '@@asyncIterator';
 
 const normalizeEmitter = emitter => {
-	const addListener = emitter.on || emitter.addListener || emitter.addEventListener;
-	const removeListener = emitter.off || emitter.removeListener || emitter.removeEventListener;
+	const addListener = emitter.$on || emitter.on || emitter.addListener || emitter.addEventListener;
+	const removeListener = emitter.$ff || emitter.off || emitter.removeListener || emitter.removeEventListener;
 
 	if (!addListener || !removeListener) {
 		throw new TypeError('Emitter is not compatible');
